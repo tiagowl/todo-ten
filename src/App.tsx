@@ -1,59 +1,65 @@
 import { useState } from 'react'
-import { LuSearch } from "react-icons/lu";
-import { LuStar } from "react-icons/lu";
-import { LuCalendar } from "react-icons/lu";
-import { MdOutlineNotificationsNone } from "react-icons/md";
-import { FiPlus } from "react-icons/fi";
+import { FaCheck } from "react-icons/fa";
 
 function App() {
   
 
   return (
-    <div className='w-full h-screen relative flex justify-end items-end' >
+    <main className="w-screen min-h-screen max-h-auto bg-[url('./assets/bg-desktop-dark.jpg')] bg-no-repeat pb-4 bg-[#171823] flex justify-center" >
+      <div className="w-[540px] h-auto mt-[50px]" >
+        <h1 className="text-white text-3xl font-bold mb-[48px]" >TODO</h1>
 
-        <button className="bg-black w-14 h-14 rounded-full flex items-center justify-center right-7 bottom-7 absolute fixed" >
-          <FiPlus className="text-white text-2xl" />
-        </button>
-
-      <main className="w-full h-screen px-4 py-5 flex flex-col" >
-        
-        
-
-        <h1 className="font-semibold text-black text-3xl mb-6" >Todo List</h1>
-
-        <form className="w-screen flex h-auto mb-4" >
-          <div className="relative w-56">
-            <LuSearch className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400'  />
-            <input type="text" placeholder="Search tasks..." className="border pl-10 placeholder:text-sm border-gray-200 border-solid w-full h-9 bg-white rounded-md"/>
-          </div>
+        <form className="w-full h-[64px] rounded-[5px] mb-[24px] bg-[#25273D] flex items-center" >
+          <span className="w-[24px] h-[24px] border-solid border border-[#393A4B] ml-[24px] rounded-full" ></span>
+          <input placeholder="Type todo here..." className="h-9 w-80 bg-[#25273D] ml-[24px] text-[#C8CBE7] focus:outline-none caret-white placeholder:text-[#C8CBE7] placeholder:text-sm" />
         </form>
 
-        {[0,1,2,3,4].map(() => ( <article className="w-full h-auto mb-4 p-5 rounded-2xl border flex flex-col border-gray-200 border-solid" >
-          <div className="w-full flex items-center" >
-            <span className="h-5 w-5 rounded-md border border-solid border-gray-200" ></span>
-            <h2 className="text-black ml-3 font-semibold text-md" >Design homepage layout</h2>
-            <LuStar className="text-lg ml-3 text-gray-300" />
+        <article className="w-full rounded-tl-[5px] rounded-tr-[5px] border-b-[#393A4B] border-solid border-b h-[64px] bg-[#25273D] flex items-center" >
+          <span className="w-[24px] h-[24px] border-solid border flex items-center justify-center border-[#393A4B] ml-[24px] rounded-full bg-gradient-to-r from-[#55DDFF] to-[#C058F3]" >
+            <FaCheck className="text-white text-xs" />
+          </span>
+          <p className="text-sm text-[#4D5067] ml-[24px] line-through" >Complete online JavaScript course</p>
+        </article>
+        <article className="w-full border-b-[#393A4B] border-solid border-b h-[64px] bg-[#25273D] flex items-center" >
+          <span className="w-[24px] h-[24px] border-solid border flex items-center justify-center border-[#393A4B] ml-[24px] rounded-full" >
+          </span>
+          <p className="text-sm text-[#C8CBE7] ml-[24px]" >Complete online JavaScript course</p>
+        </article>
+        <article className="w-full border-b-[#393A4B] border-solid border-b h-[64px] bg-[#25273D] flex items-center" >
+          <span className="w-[24px] h-[24px] border-solid border flex items-center justify-center border-[#393A4B] ml-[24px] rounded-full" >
+          </span>
+          <p className="text-sm text-[#C8CBE7] ml-[24px]" >Complete online JavaScript course</p>
+        </article>
+        <article className="w-full border-b-[#393A4B] border-solid border-b h-[64px] bg-[#25273D] flex items-center" >
+          <span className="w-[24px] h-[24px] border-solid border flex items-center justify-center border-[#393A4B] ml-[24px] rounded-full" >
+          </span>
+          <p className="text-sm text-[#C8CBE7] ml-[24px]" >Complete online JavaScript course</p>
+        </article>
+        <article className="w-full border-b-[#393A4B] border-solid border-b h-[64px] bg-[#25273D] flex items-center" >
+          <span className="w-[24px] h-[24px] border-solid border flex items-center justify-center border-[#393A4B] ml-[24px] rounded-full" >
+          </span>
+          <p className="text-sm text-[#C8CBE7] ml-[24px]" >Complete online JavaScript course</p>
+        </article>
+        <article className="w-full border-b-[#393A4B] border-solid border-b h-[64px] bg-[#25273D] flex items-center" >
+          <span className="w-[24px] h-[24px] border-solid border flex items-center justify-center border-[#393A4B] ml-[24px] rounded-full" >
+          </span>
+          <p className="text-sm text-[#C8CBE7] ml-[24px]" >Complete online JavaScript course</p>
+        </article>
+        <article className="w-full h-[55px] rounded-bl-[5px] rounded-br-[5px] bg-[#25273D] px-[24px] flex items-center justify-between" >
+          <p className="text-xs text-[#5B5E7E]" >5 items left</p>
+
+          <div className="flex justify-between w-36" >
+            <p className="text-xs hover:text-white text-[#3A7CFD]" >All</p>
+            <p className="text-xs text-[#5B5E7E] hover:text-white" >Active</p>
+            <p className="text-xs text-[#5B5E7E] hover:text-white" >Completed</p>
           </div>
 
-          <div className="flex w-full items-center pl-8 mt-2" >
-            <span className="border px-1 items-center rounded-md flex border-solid border-gray-200 w-auto h-6" >
-              <p className="text-xs" >Emily Carter</p>
-            </span>
-            <span className="border px-1 items-center ml-2 rounded-md flex border-solid border-gray-200 w-auto h-6" >
-              <p className="text-xs" >Liam Walker</p>
-            </span>
+          <p className="text-xs text-[#5B5E7E] hover:text-white" >Clear Completed</p>
+        </article>
+        
 
-            <LuCalendar className="text-sm text-gray-400 ml-4" />
-            <p className="text-xs text-gray-500 ml-1" >Jun 4, 2023</p>
-
-            <MdOutlineNotificationsNone className="text-md ml-3 text-gray-400" />
-
-            <p className="text-xs text-gray-500 ml-3" >Substasks: 1/2</p>
-          </div>
-
-        </article>))}
-      </main>
-    </div>
+      </div>
+    </main>
   )
 }
 
