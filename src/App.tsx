@@ -26,7 +26,7 @@ function App() {
     formState: { errors },
   } = useForm<Input>()
   const onSubmit: SubmitHandler<Input> = (data) => console.log(data);
-  const {get} = useFetch();
+  const {get, patch} = useFetch();
 
   const [text, setText] = useState("");
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -44,6 +44,14 @@ function App() {
     const tasks = await get(`?text=${text}`);
 
     setTasks(tasks);
+  }
+
+  const checkTask = async (id: number) => {
+
+    const tasks = await patch(`/${id}/done`);
+
+    setTasks(tasks);
+
   }
 
   useEffect(()=>{
@@ -68,7 +76,7 @@ function App() {
         </form>
 
         {tasks?.map((item, index) => (<article className={`w-full ${index === 0 && 'rounded-tl-[5px] rounded-tr-[5px]'} border-b-[#393A4B] border-solid border-b h-[64px] bg-[#25273D] flex items-center`} >
-          <span className={`w-[24px] h-[24px] border-solid border flex items-center justify-center border-[#393A4B] ml-[24px] rounded-full ${item?.isChecked ? 'bg-gradient-to-r from-[#55DDFF] to-[#C058F3]' : 'bg-[#25273D]'}`} >
+          <span onClick={()=> checkTask(item?.id)} className={`w-[24px] h-[24px] border-solid border flex items-center justify-center border-[#393A4B] ml-[24px] rounded-full ${item?.isChecked ? 'bg-gradient-to-r from-[#55DDFF] to-[#C058F3]' : 'bg-[#25273D]'}`} >
             {item?.isChecked &&<FaCheck className="text-white text-xs" />}
           </span>
           <p className={`text-sm  ml-[24px] ${item?.isChecked ? 'line-through text-[#4D5067]' : 'text-[#C8CBE7]'}`} >{item?.text}</p>
