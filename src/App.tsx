@@ -8,7 +8,7 @@ type Input = {
   text: string;
 }
 
-function App() {
+function LoadingView(){
 
   const todos = [
     {id: 1, text: "Complete online JavaScript course", isChecked: true},
@@ -19,6 +19,22 @@ function App() {
     {id: 6, text: "Complete Todo App on Frontend mentor", isChecked: false}
   ]
 
+  return(
+    <div className="w-full h-auto flex flex-col relative opacity-60 justify-center items-center" >
+      {todos?.map((item, index) => (<article className={`w-full ${index === 0 && 'rounded-tl-[5px] rounded-tr-[5px]'} border-b-[#393A4B] border-solid border-b h-[64px] bg-[#25273D] flex items-center`} >
+          <span className={`w-[24px] h-[24px] border-solid border flex items-center justify-center border-[#393A4B] ml-[24px] rounded-full ${item?.isChecked ? 'bg-gradient-to-r from-[#55DDFF] to-[#C058F3]' : 'bg-[#25273D]'}`} >
+            {item?.isChecked &&<FaCheck className="text-white text-xs" />}
+          </span>
+          <p className={`text-sm  ml-[24px] ${item?.isChecked ? 'line-through text-[#4D5067]' : 'text-[#C8CBE7]'}`} >{item?.text}</p>
+          
+      </article>))}
+      <div className="w-6 h-6 border-2 absolute border-white border-t-transparent rounded-full animate-spin"></div>
+    </div>
+  );
+}
+
+function App() {
+
   const {
     register,
     handleSubmit,
@@ -26,7 +42,7 @@ function App() {
     formState: { errors },
   } = useForm<Input>()
   
-  const {get, patch, post} = useFetch();
+  const {get, patch, post, loading} = useFetch();
 
   const [text, setText] = useState("");
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -82,12 +98,14 @@ function App() {
           {text.length > 0 && <button type="submit" className="w-16 h-7 rounded-[5px] mr-[24px] bg-fuchsia-800 text-white text-sm" >Add</button>}
         </form>
 
-        {tasks?.map((item, index) => (<article className={`w-full ${index === 0 && 'rounded-tl-[5px] rounded-tr-[5px]'} border-b-[#393A4B] border-solid border-b h-[64px] bg-[#25273D] flex items-center`} >
+        {loading === false && tasks?.map((item, index) => (<article className={`w-full ${index === 0 && 'rounded-tl-[5px] rounded-tr-[5px]'} border-b-[#393A4B] border-solid border-b h-[64px] bg-[#25273D] flex items-center`} >
           <span onClick={()=> checkTask(item?.id)} className={`w-[24px] h-[24px] border-solid border flex items-center justify-center border-[#393A4B] ml-[24px] rounded-full ${item?.isChecked ? 'bg-gradient-to-r from-[#55DDFF] to-[#C058F3]' : 'bg-[#25273D]'}`} >
             {item?.isChecked &&<FaCheck className="text-white text-xs" />}
           </span>
           <p className={`text-sm  ml-[24px] ${item?.isChecked ? 'line-through text-[#4D5067]' : 'text-[#C8CBE7]'}`} >{item?.text}</p>
         </article>))}
+
+        {loading === true && <LoadingView/>}
 
         <article className="w-full h-[55px] rounded-bl-[5px] rounded-br-[5px] bg-[#25273D] px-[24px] flex items-center justify-between" >
           <p className="text-xs text-[#5B5E7E]" >5 items left</p>
