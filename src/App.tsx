@@ -25,11 +25,18 @@ function App() {
     watch,
     formState: { errors },
   } = useForm<Input>()
-  const onSubmit: SubmitHandler<Input> = (data) => console.log(data);
-  const {get, patch} = useFetch();
+  
+  const {get, patch, post} = useFetch();
 
   const [text, setText] = useState("");
   const [tasks, setTasks] = useState<Task[]>([]);
+
+  const onSubmit: SubmitHandler<Input> = async (data) => {
+
+    const tasks = await post("/", data);
+
+    setTasks(tasks);
+  };
 
   const fetchTasks = async() => {
 
@@ -72,7 +79,7 @@ function App() {
             <span className="w-[24px] h-[24px] border-solid border border-[#393A4B] ml-[24px] rounded-full" ></span>
             <input {...register("text", {required: true})} value={text} onChange={(e)=> setText(e.target.value)} placeholder="Procurar ou adicionar todo..." className="h-9 w-80 bg-[#25273D] ml-[24px] text-[#C8CBE7] focus:outline-none caret-white placeholder:text-[#C8CBE7] placeholder:text-sm" />
           </div>
-          {text.length > 0 && <button className="w-16 h-7 rounded-[5px] mr-[24px] bg-fuchsia-800 text-white text-sm" >Add</button>}
+          {text.length > 0 && <button type="submit" className="w-16 h-7 rounded-[5px] mr-[24px] bg-fuchsia-800 text-white text-sm" >Add</button>}
         </form>
 
         {tasks?.map((item, index) => (<article className={`w-full ${index === 0 && 'rounded-tl-[5px] rounded-tr-[5px]'} border-b-[#393A4B] border-solid border-b h-[64px] bg-[#25273D] flex items-center`} >

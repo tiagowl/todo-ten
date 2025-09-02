@@ -54,6 +54,14 @@ export const useFetch = () => {
 
     }
 
-    return { error, loading, get, patch }
+    const post = async (url: string, body: object) => {
+
+        const response = await api.post(url, body)
+
+        return response.data;
+
+    }
+
+    return { error, loading, get, patch, post }
 
 }
