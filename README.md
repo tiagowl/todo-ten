@@ -1,69 +1,75 @@
-# React + TypeScript + Vite
+# 📝 Todo App React + TypeScript + Tailwind
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Um aplicativo de **lista de tarefas** moderno, desenvolvido com **React**, **TypeScript** e **Tailwind CSS**, com foco em boas práticas de desenvolvimento frontend, acessibilidade e experiência do usuário.  
 
-Currently, two official plugins are available:
+Este projeto é ideal para demonstrar **habilidades em React, gerenciamento de estado, componentes reutilizáveis e estilização moderna**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🔹 Funcionalidades
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Adicionar e remover tarefas
+- Marcar tarefas como concluídas
+- Filtrar tarefas por status (Todos, restantes e completos)
+- Layout responsivo, com design moderno usando Tailwind CSS
+- Interações dinâmicas e feedback visual
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 🔹 Tecnologias utilizadas
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **React 18** – Biblioteca principal para construção da interface
+- **TypeScript** – Tipagem estática para maior segurança e robustez
+- **Tailwind CSS** – Estilização utilitária moderna e responsiva
+- **React Testing Library** – Testes unitários e de interação
+- **Vite** – Bundler rápido e moderno para React
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🔹 Pré-requisitos
+
+Certifique-se de ter instalado:
+
+- [Node.js](https://nodejs.org/) ≥ 18.x
+- npm ou yarn
+
+---
+
+## 🔹 Como rodar o projeto localmente
+
+1. **Clone o repositório**
+```bash
+git clone https://github.com/seu-usuario/todo-app-react.git
+cd todo-app-react
+Instale as dependências
+
+bash
+Copiar código
+npm install
+# ou
+yarn install
+Inicie o servidor de desenvolvimento
+
+bash
+Copiar código
+npm run dev
+# ou
+yarn dev
+Abra no navegador
+Acesse: http://localhost:5173 (Vite geralmente abre nesse endereço)
+
+🔹 Rodando testes
+Este projeto utiliza React Testing Library para testes unitários:
+
+bash
+Copiar código
+npx vitest
+
+
+🔹 Contato
+Se você quiser me conhecer melhor ou discutir oportunidades de trabalho:
+
+LinkedIn: linkedin.com/tiago-landi-software
+
+GitHub: tiagowl
