@@ -49,6 +49,8 @@ export const useFetch = () => {
 
         }catch(error){
 
+            setLoading(false);
+
             setError(error as string);
         }
 
@@ -56,12 +58,51 @@ export const useFetch = () => {
 
     const post = async (url: string, body: object) => {
 
-        const response = await api.post(url, body)
+        try{
+            setLoading(true);
 
-        return response.data;
+            const response = await api.post(url, body)
+
+            if(response){
+                setLoading(false);
+
+                return response.data;
+            }
+        }catch(error){
+
+            setLoading(false);
+
+            setError(error as string);
+        }
+
+
+        
 
     }
 
-    return { error, loading, get, patch, post }
+    const remove = async (url: string) => {
+
+        try{
+
+            setLoading(true);
+
+            const response = await api.delete(url);
+
+            if(response){
+                setLoading(false);
+
+                return response.data;
+            }
+    
+        }catch(error){
+
+            setLoading(false);
+
+            setError(error as string);
+        }
+
+    }
+
+    return { error, loading, get, patch, post, remove }
 
 }
