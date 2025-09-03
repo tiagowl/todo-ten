@@ -42,28 +42,21 @@ Certifique-se de ter instalado:
 ```bash
 git clone https://github.com/seu-usuario/todo-app-react.git
 cd todo-app-react
+
 Instale as dependências
 
-bash
-Copiar código
 npm install
-# ou
-yarn install
+
 Inicie o servidor de desenvolvimento
 
-bash
-Copiar código
 npm run dev
-# ou
-yarn dev
+
 Abra no navegador
 Acesse: http://localhost:5173 (Vite geralmente abre nesse endereço)
 
 🔹 Rodando testes
 Este projeto utiliza React Testing Library para testes unitários:
 
-bash
-Copiar código
 npx vitest
 
 
